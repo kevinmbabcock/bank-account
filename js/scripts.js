@@ -1,6 +1,6 @@
 //busines logic
 function Account(ownerName, initialDeposit) {
-  this.ownerName = name;
+  this.ownerName = ownerName;
   this.initialDeposit = initialDeposit;
   this.changes = [];
 }
@@ -10,16 +10,16 @@ function Change(deposit, withdraw) {
   this.withdraw = withdraw;
 }
 
-Account.changes.push(Change);
 
-Account.prototype.balance = function() {
-  var initial = this.initialDeposit;
-  this.changes.forEach(function(change) {
-    var deposit = this.deposit;
-    var withdraw = this.withdraw
-    return initial - withdraw + deposit
-  })
-};
+
+// Account.prototype.balance = function() {
+//   var initial = this.initialDeposit;
+//   this.changes.forEach(function(change) {
+//     var deposit = this.deposit;
+//     var withdraw = this.withdraw
+//     return initial - withdraw + deposit
+//   })
+// };
 
 // var balance = function (initialDeposit,deposit,withdraw) {
 //   return initialDeposit - withdraw + deposit
@@ -30,20 +30,22 @@ Account.prototype.balance = function() {
 //user logic
 $(document).ready(function() {
 
-  var newAccount = {};
-  var newChange ={};
-  var initialDeposit = 0;
-  var deposit = 0;
-  var withdraw =0;
+  var name;
+  var newAccount;
+  var deposit;
+  var withdraw;
+  var newChange;
 
   $("form#accountCreation").submit(function(event) {
     event.preventDefault();
-    var name = $("#ownerName").val();
+    name = $("#ownerName").val();
     $("#ownerName").val("");
     initialDeposit = parseInt($("#initialDeposit").val());
     $("#initialDeposit").val("");
     newAccount = new Account(name,initialDeposit);
+    console.log(newAccount);
   });
+
 
   $("form#accountChange").submit(function(event) {
     event.preventDefault();
@@ -52,9 +54,16 @@ $(document).ready(function() {
     withdraw = parseInt($("#userWithdraw").val());
     $("#userWithdraw").val("");
     newChange = new Change(deposit,withdraw);
+    // console.log(newAccount);
   });
 
-  var userBalance = newAccount.balance(initialDeposit,deposit,withdraw);
-  alert(userBalance);
+
+
+
+  newAccount.changes.push(newChange[0]);
+  console.log(newAccount.changes);
+
+  // var userBalance = newAccount.balance(initialDeposit,deposit,withdraw);
+  // alert(userBalance);
 
 });
