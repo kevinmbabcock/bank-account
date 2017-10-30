@@ -1,0 +1,21 @@
+.accountCreation {
+  border: 5px solid black;
+  background-color: lightgray;
+  margin: 5px;
+  padding: 5px;
+}
+
+.accountChange {
+  border: 5px solid black;
+  background-color: lightgray;
+  margin: 5px;
+  padding: 5px;
+}
+
+.accountBalance {
+  border: 5px solid black;
+  background-color: lightgray;
+  margin: 5px;
+  padding: 5px;
+  display: none;
+}
